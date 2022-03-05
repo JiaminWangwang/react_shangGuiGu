@@ -16,28 +16,24 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
 
     <script type="text/babel">  /* 此处一定要写babel,告诉浏览器里面的代码需要用babel翻译 */
-        // 1.创建组件
         class Weather extends React.Component{
-            constructor(props){
-                super(props)
-                this.state = {
-                    isHot: true
-                }
+            state = {
+                isHot: false
             }
-
             render() {
-                console.log(this);
                 const { isHot } = this.state;
-                return <h1 onClick={demo}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' :'凉爽'}</h1>
+            }
+            changeWeather = () => {  // 箭头函数中的this指向函数外部
+                console.log(this)
+                const isHot = this.state.isHot;
+                this.setState({
+                    isHot: !isHot
+                })
             }
         }
+        ReactDOM.render(<Weather/>, document.getElementById('test'));
 
-        // 2.渲染组件到页面
-        ReactDOM.render(<Weather />, document.getElementById('test'));
-
-        function demo() {
-            console.log('标题被点击了');
-        }
     </script>
 
 </body>

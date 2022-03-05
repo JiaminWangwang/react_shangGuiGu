@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 1.创建一个Person类
+        class Person {
+            // 构造器方法
+            constructor(name, age) {
+                // 构造器中的this是谁？—— 类的实例对象
+                this.name = name;
+                this.age = age;
+            }
+
+            // 一般方法
+            speak() {
+                //speak方法放在了哪里？ —— 类的原型对象上，供实例使用
+                //通过Person实例调用speak时，speak中的this就是Person实例
+                console.log(this);
+            }
+        }
+
+        const p1 = new Person('tom', 18);
+        p1.speak() // 通过实例调用speak方法，this指向实例p1
+
+        const x = p1.speak;
+        x() // this指向undefined，因为类中的函数，自动开启了严格模式，在严格模式下，
+            // 函数内部的this不能指向window
+        
+        console.log(this)
+
+    </script>
+
+</body>
+</html>
