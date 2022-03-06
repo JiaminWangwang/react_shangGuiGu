@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test2"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入prop-types, 用于对组件标签属性进行限制 -->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <script type="text/babel">  /* 此处一定要写babel,告诉浏览器里面的代码需要用babel翻译 */
+        //1.创建函数式组件
+        function Person(props) {
+            const {name, age, sex} = props;
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{sex}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+        //定义props类型，必要性限制
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number,
+            sex: PropTypes.string,
+        }
+        //定义props默认值
+        Person.defaultProps = {
+            age: 10,
+            sex: '女',
+        }
+        // 渲染组件到页面
+        ReactDOM.render(<Person name="tom" age={14} sex="女" />,document.getElementById('test2'));
+    </script>
+
+</body>
+</html>

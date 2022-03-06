@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">  /* 此处一定要写babel,告诉浏览器里面的代码需要用babel翻译 */
+        //创建组件
+        class Demo extends React.Component{
+            showData = () => {
+                const { input1 } = this;
+                alert(input1.value);
+            }
+
+            showData2 = () => {
+                const { input2 } = this;
+                alert(input2.value);
+            }
+
+            saveRef = (c) => {
+                this.input1 = c;
+                console.log('@ ', c); // 当数据更新的时候，不会再次调用回调函数
+            }
+
+            render() {
+                return (
+                    <div>
+                        {/*
+                            1. 现象：内联回调函数，当数据更新时，会调用两次内联回调，第一次值为null，第二次为节点值；
+                            2. 原因：react在更新时，会清掉旧的ref并且设置新的；
+                            3. 解决：将ref的回调函数定义成实例的绑定函数；
+                        */}
+                        {/*<input ref={(c)=>{this.input1 = c; console.log('@ ', c)}} type="text" placeholder="123"/>*/}
+                        <input ref={this.saveRef} type="text" placeholder="123"/>
+                        <button onClick={this.showData}>点击我提示左侧数据</button>
+                        <input onBlur={this.showData2} ref={(c)=>{this.input2 = c}} type="text" placeholder="234" />
+                    </div>
+                )
+            }
+
+        }
+
+        ReactDOM.render(<Demo/>, document.getElementById('test'));
+    </script>
+
+</body>
+</html>
