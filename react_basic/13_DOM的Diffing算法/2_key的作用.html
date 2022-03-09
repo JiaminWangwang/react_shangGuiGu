@@ -163,7 +163,7 @@
                         <ul>
                             {this.state.persons.map((item, index) => {
                                 return(
-                                    <li key={index}>{item.name}---{item.age} <input type="text"/></li>
+                                    <li key={index}>{item.name}---{item.age} <input type="text" value={item.name} /></li>
                                 )
                             })}
                         </ul>
@@ -173,7 +173,7 @@
                         <ul>
                             {this.state.persons.map((item) => {
                                 return (
-                                    <li key={item.id}>{item.name}----{item.age} <input type="text"/></li>
+                                    <li key={item.id}>{item.name}----{item.age} <input type="text" value={item.name} /></li>
                                 )
                             })}
                         </ul>
@@ -181,6 +181,9 @@
                 )
             }
         }
+
+        console.log('虚拟DOM', <Person/>);
+        console.log('真实DOM', document.getElementById('test'))
         ReactDOM.render(<Person/>, document.getElementById('test'))
         
     </script>
