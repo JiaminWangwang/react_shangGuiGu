@@ -1,0 +1,10 @@
+.list_wrapper{
+    width: 95%;
+    min-height: 30px;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+}
+.item_wrapper{
+    width: 100%;
+    min-height: 40px;
+}
