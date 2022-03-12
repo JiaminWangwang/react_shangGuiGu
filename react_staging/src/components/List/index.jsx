@@ -1,25 +1,25 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 
 import Item from './Item';
 
 import './index.css';
 
 export default class List extends Component{
-    state = {
-        todoList: [
-            {id: 1, name: '吃饭', done: true},
-            {id: 2, name: '睡觉', done: false},
-            {id: 3, name: '敲代码', done: true},
-        ]
+    // 对接收的props进行：类型、必要性的限制
+    static propTypes = {
+        updateTodo: PropTypes.func.isRequired,
+        todos: PropTypes.array.isRequired,
     }
+
     render(){
-        const {todoList} = this.state
+        const { todos, updateTodo, deleteTodo } = this.props;
         return(
             <div className="list_wrapper">
                 <div className="item_wrapper">
-                    {todoList.map(item => {
+                    {todos.map(item => {
                         return(
-                            <Item key={item.id} {...item}/>
+                            <Item updateTodo={updateTodo} deleteTodo={deleteTodo} key={item.id} {...item}/>
                         )
                     })}
                 </div>

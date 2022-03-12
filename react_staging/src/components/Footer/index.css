@@ -1,4 +1,14 @@
 .footer_wrapper{
     width: 95%;
     margin: 20px auto;
+    position: relative;
+}
+
+.deleteAllBtn{
+    position: absolute;
+    right: 0;
+    padding: 2px 8px;
+    background-color: rgb(221, 68, 68);
+    color: #fff;
+    font-size: 16px;
 }
