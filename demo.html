@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(typeof(a))  // undefined
+
+        let b;
+        console.log(typeof(b))  // undefined
+
+        let c=null
+        console.log(typeof(c)) // object
+
+        const handle = ()=> {
+            return null
+        }
+        console.log(typeof(handle)) // function
+        console.log(typeof(handle())) // object
+
+        const d = Symbol('a')
+        console.log(typeof(d)) // symbol
+
+        const aObj = {a: '1', b: '2'}
+        console.log(typeof(aObj)) // object
+
+    </script>
+</body>
+</html>
