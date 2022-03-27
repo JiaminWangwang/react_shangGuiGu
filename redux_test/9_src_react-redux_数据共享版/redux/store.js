@@ -4,8 +4,6 @@
 
 //引入createStore，专门用于创建store对象
 import {createStore, applyMiddleware, combineReducers} from 'redux'
-//引入redux-devtools-extension
-import {composeWithDevTools} from 'redux-devtools-extension'
 //引入为Count组件服务的reducer
 import countReducer from './reducers/count'
 import personReducer from './reducers/person'
@@ -14,7 +12,7 @@ import thunk from 'redux-thunk'
 
 const allReducer = combineReducers({countReducer, personReducer})
 
-const store = createStore(allReducer, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(allReducer, applyMiddleware(thunk))
 
 // 暴露store
 export default store

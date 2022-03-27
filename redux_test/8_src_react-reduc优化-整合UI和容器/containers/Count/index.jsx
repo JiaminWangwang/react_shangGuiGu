@@ -4,7 +4,7 @@ import {
     createIncrementAction,
     createDecrementAction,
     createIncrementAsyncAction
-} from '../../redux/actions/count'
+} from '../../redux/count_action'
 
 // 引入connect用于连接UI组件与redux
 import {connect} from 'react-redux'
@@ -30,10 +30,10 @@ class Count extends Component {
       this.props.jiaAsync(value*1,500)
     }
     render() {
+      console.log(this.props)
       return (
         <div>
-            <h2>我是Count组件, Person组件总人数为：{this.props.persons.length}</h2>
-            <h4>求和：{this.props.count}</h4>
+            <h1>求和：{this.props.count}</h1>
             <select ref={c => this.selectNumber = c} >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -49,10 +49,7 @@ class Count extends Component {
   }
   
 
-const mapStateToProps = state => ({
-  count: state.countReducer,
-  persons: state.personReducer,
-})
+const mapStateToProps = state => ({count: state})
 
 // mapDispatchToProps简写
 const mapDispatchToProps = {
