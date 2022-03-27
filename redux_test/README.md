@@ -81,3 +81,6 @@
             const store = createStore(countReducer, composeWithDevTools(applyMiddleware(thunk)))
         ```
 
+## 8. 求和案例_react-redux最终版
+    - 所有变量名字要规范，尽量触发对象的简写形式，
+    - reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer
