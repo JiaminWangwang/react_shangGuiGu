@@ -1,0 +1,18 @@
+.parent{
+    width: 500px;
+    padding: 10px;
+    box-sizing: content-box;
+    background-color: bisque;
+}
+.a{
+    width: 80%;
+    padding: 10px;
+    box-sizing: content-box;
+    background-color: rgb(199, 120, 23);
+}
+.b{
+    width: 80%;
+    padding: 10px;
+    box-sizing: content-box;
+    background-color: rgb(74, 59, 156);
+}
